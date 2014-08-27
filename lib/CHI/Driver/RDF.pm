@@ -1,4 +1,4 @@
-package CHI::Driver::MyDriver;
+package CHI::Driver::RDF;
 use Moo;
 use strict;
 use warnings;
@@ -9,12 +9,9 @@ use Carp;
 
 extends 'CHI::Driver';
 
-has 'model' => ( is => 'ro', isa => 'RDF::Trine::Model', lazy=> 1, builder => '_build_model' );
-
-
-sub _build_model {
-	return RDF::Trine::Model->temporary_model;
-}
+has 'model' => ( is => 'ro', 
+						  isa => 'RDF::Trine::Model',
+						  required=> 1);
 
 
 sub fetch {
